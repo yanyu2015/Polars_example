@@ -1,5 +1,3 @@
-# 2
-
 
 #%% Quick start
 import polars as pl
