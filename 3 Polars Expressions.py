@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Nov 21 12:49:42 2022
+Created on Mon Nov 21
 
 @author: xuanQS
 """
