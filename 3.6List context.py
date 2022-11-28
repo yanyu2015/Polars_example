@@ -22,4 +22,20 @@ out = grades.select([pl.concat_list(pl.all().exclude("student")).alias("all_grad
 print(out)
 
 #%% Running polars expression on list elements
+# the percentage rank expression
+rank_pct = pl.element().rank(reverse=True) / pl.col("").count()
+
+
+grades.with_column(
+    # create the list of homogeneous data
+    pl.concat_list(pl.all().exclude("student")).alias("all_grades")
+).select([
+    # select all columns except the intermediate list
+    pl.all().exclude("all_grades"),
+    # compute the rank by calling `arr.eval`
+    pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank")
+])
+
+    
+    
 
